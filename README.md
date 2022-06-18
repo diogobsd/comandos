@@ -20,13 +20,13 @@
     git tag (lista tags)
     git tag react (add tag react)
     git tad -d react (remove tag react)
-    git log exibe log
+    git log (exibe log)
     git push --tags
 
 ## React + Vite
 
     npm create vite@latest
     Project name: nome-do-projeto
-    React / React-ts
+    react / react-ts
     npm i
     code .
