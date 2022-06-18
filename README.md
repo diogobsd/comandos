@@ -1,7 +1,7 @@
 ## Git - Criar primeira commit
 git init
 git add .
-git commit -m "primeira commit" 
+git commit -m "primeira commit"
 git remote add origin https://github.com/diogobsd/react-api-axios.git
 git push -u origin master
 
@@ -26,4 +26,3 @@ npm create vite@latest
 * React / React-ts
 npm i
 code .
-
