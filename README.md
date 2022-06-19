@@ -33,5 +33,6 @@
 
 ## React Native
 
-    npx react-native init app01
+    npx react-native init app01 (build project app01)
+    cd app01
     npx react-native run-android
