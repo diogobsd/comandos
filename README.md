@@ -36,6 +36,9 @@
     npx react-native init app01 (build project app01)
     cd app01
     npx react-native run-android
+    
+    Convert AAB to APKs rename to ZIP and extract APK
+    java -jar bundletool.jar build-apks --bundle=app-release.aab --output=single-app-release.apks --mode=universal
 
 ## VS-Code
 
