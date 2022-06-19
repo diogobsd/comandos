@@ -31,3 +31,7 @@
     npm i
     code .
 
+## React Native
+
+    npx react-native init app01
+    npx react-native run-android
