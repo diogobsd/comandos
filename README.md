@@ -36,3 +36,9 @@
     npx react-native init app01 (build project app01)
     cd app01
     npx react-native run-android
+
+## VS-Code
+
+    React error 8810 - 8806:
+    File -> Preferences -> Settings
+    "javascript.validate.enable": false
