@@ -34,6 +34,8 @@
 ## React Native
 
     npx react-native init nome_do_projeto
+    ou
+    npx react-native init nome_do_projeto --template react-native-template-typescript (Para TSX)
     cd nome_do_projeto
     npx react-native run-android
     
