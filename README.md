@@ -50,7 +50,7 @@
 
 ## React extras
 
-    npm install styled-components
+    npm install --save styled-components
     ou
     yarn add styled-components
     
