@@ -22,6 +22,9 @@
     git tad -d react (remove tag react)
     git log (exibe log)
     git push --tags
+    
+## Git Editor
+    [Editor](https://pandao.github.io/editor.md/en.html)
 
 ## React + Vite
 
