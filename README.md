@@ -33,8 +33,8 @@
 
 ## React Native
 
-    npx react-native init app01 (build project app01)
-    cd app01
+    npx react-native init nome_do_projeto
+    cd nome_do_projeto
     npx react-native run-android
     
     Convert AAB to APKs rename to ZIP and extract APK
