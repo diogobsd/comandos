@@ -420,3 +420,16 @@ if (majorVersionIOS <= 9) {
 }
 ```
 
+#### Arrays
+Adicionar conteúdo a um array existente (...vArr)
+
+```javascript
+const [posts, setPosts] = useState<string[]>([
+	'Post 1',
+	'Post 2',
+	'Post 3'
+])
+function createPost() {
+setPosts([...posts, 'Novo post'])
+}
+```
