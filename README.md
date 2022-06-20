@@ -45,15 +45,37 @@
     Convert AAB to APKs rename to ZIP and extract APK
     java -jar bundletool.jar build-apks --bundle=app-release.aab --output=single-app-release.apks --mode=universal
     
-    * BUILD AAB
-    sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+    *** BUILD AAB
+    
+    1) sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
     * DEFINA UMA SENHA
-    cp my-upload-key.keystore ./android/app
-    * Update android/gradle.properties
+    
+    2) cp my-upload-key.keystore ./android/app
+    2) copy my-upload-key.keystore android/app
+    
+    3) * Update android/gradle.properties
     MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
     MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
-    MYAPP_UPLOAD_STORE_PASSWORD=*****
-    MYAPP_UPLOAD_KEY_PASSWORD=*****
+    MYAPP_UPLOAD_STORE_PASSWORD=*SUA SENHA*
+    MYAPP_UPLOAD_KEY_PASSWORD=*SUA SENHA*
+    
+    4) * Edit: android/app/build.gradle
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }        
+    }
+
     
     cd android
     ./gradlew bundleRelease
