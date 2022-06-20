@@ -88,7 +88,7 @@ import React from 'react';
 import { //Core components
 Button,
 FlatList, //Para grande quantidade de conteúdo
-Image, //<Image source={{uri: "https://abc/cat.png"}} style={{width: 20, height: 20}} />
+Image, //<Image source={{uri: "https://abc/cat.png"}} resizeMode='contain' style={{width: 20, height: 20}} />
 Platform, //Ex: Platform.OS === 'ios' ? 200 : 100
 ScrollView, //Para pequena quantidade de conteúdo
 StatusBar,
