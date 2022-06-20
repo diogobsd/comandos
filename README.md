@@ -44,6 +44,19 @@
     
     Convert AAB to APKs rename to ZIP and extract APK
     java -jar bundletool.jar build-apks --bundle=app-release.aab --output=single-app-release.apks --mode=universal
+    
+    * BUILD AAB
+    sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+    * DEFINA UMA SENHA
+    cp my-upload-key.keystore ./android/app
+    * Update android/gradle.properties
+    MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+    MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+    MYAPP_UPLOAD_STORE_PASSWORD=*****
+    MYAPP_UPLOAD_KEY_PASSWORD=*****
+    
+    cd android
+    ./gradlew bundleRelease
 
 ## VS-Code
 
