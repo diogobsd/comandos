@@ -1,5 +1,88 @@
 ### React
 #### Guia do curso ministrado por Diogo Germano
+
+#### Basic Components
+View
+The most fundamental component for building a UI.
+
+Text
+A component for displaying text.
+
+Image
+A component for displaying images.
+
+TextInput
+A component for inputting text into the app via a keyboard.
+
+ScrollView
+Provides a scrolling container that can host multiple components and views.
+
+StyleSheet
+Provides an abstraction layer similar to CSS stylesheets.
+
+#### User Interface
+Button
+A basic button component for handling touches that should render nicely on any platform.
+
+Switch
+Renders a boolean input.
+
+#### List Views
+FlatList
+A component for rendering performant scrollable lists.
+
+SectionList
+Like FlatList, but for sectioned lists.
+
+### Android Components and APIs
+BackHandler
+Detect hardware button presses for back navigation.
+
+DrawerLayoutAndroid
+Renders a DrawerLayout on Android.
+
+PermissionsAndroid
+Provides access to the permissions model introduced in Android M.
+
+ToastAndroid
+Create an Android Toast alert.
+
+### iOS Components and APIs
+
+ActionSheetIOS
+API to display an iOS action sheet or share sheet.
+
+#### Others
+ActivityIndicator
+Displays a circular loading indicator.
+
+Alert
+Launches an alert dialog with the specified title and message.
+
+Animated
+A library for creating fluid, powerful animations that are easy to build and maintain.
+
+Dimensions
+Provides an interface for getting device dimensions.
+
+KeyboardAvoidingView
+Provides a view that moves out of the way of the virtual keyboard automatically.
+
+Linking
+Provides a general interface to interact with both incoming and outgoing app links.
+
+Modal
+Provides a simple way to present content above an enclosing view.
+
+PixelRatio
+Provides access to the device pixel density.
+
+RefreshControl
+This component is used inside a ScrollView to add pull to refresh functionality.
+
+StatusBar
+Component to control the app status bar.
+
 ```javascript
 import React from 'react';
 import { //Core components
@@ -336,3 +419,4 @@ if (majorVersionIOS <= 9) {
   console.log('Work around a change in behavior');
 }
 ```
+
