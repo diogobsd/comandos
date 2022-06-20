@@ -1,10 +1,12 @@
 ### React
-####Guia e Ref. do curso ministrado por Diogo Germano
+#### Guia do curso ministrado por Diogo Germano
 ```javascript
 import React from 'react';
 import { //Core components
 Button,
+FlatList, - para grande quantidade de conteúdo.
 Image, <Image source={{uri: "https://abc/cat.png"}} style={{width: 20, height: 20}} />
+Platform, Ex: Platform.OS === 'ios' ? 200 : 100
 ScrollView,
 StatusBar,
 StyleSheet,
@@ -13,7 +15,8 @@ TextInput
 View - <View> equivalente a <div>
 SafeAreaView, - render em iOS version 11 or 11+, wrap flex: 1
 InputAccessoryView - usar com nativeID, render iOS keyboard.
-ScrollView
+ScrollView - para pequena quantidade de conteúdo
+SectionList, - para segmentar pela letra do nome uma lista de nomes, d: dan, den...
 } from 'react-native';
 
 //EXEMPLOS
@@ -117,7 +120,7 @@ export default Cafe;
 
 ```
 
-###Manipulando a entrada de texto
+### Manipulando a entrada de texto
 
 ```javascript
 //TextInput é um componente principal que permite ao usuário inserir texto. Tem uma onChangeText prop que pega uma função para ser chamada toda vez que o texto muda, e uma onSubmitEditing prop que pega uma função para ser chamada quando o texto é submetido.
@@ -152,9 +155,12 @@ ScrollViews pode ser configurado para permitir a paginação através de visuali
 
 No iOS, um ScrollView com um único item pode ser usado para permitir que o usuário amplie o conteúdo. Configure os adereços maximumZoomScale e minimumZoomScale e seu usuário poderá usar gestos de pinçar e expandir para aumentar e diminuir o zoom.
 
-O ScrollView funciona melhor para apresentar um pequeno número de coisas de tamanho limitado. Todos os elementos e visualizações de a ScrollViewsão renderizados, mesmo que não sejam exibidos na tela no momento. Se você tiver uma longa lista de itens que não cabem na tela, use um FlatList. Então, vamos aprender sobre exibições de lista a seguir.
+O **ScrollView** funciona **melhor para apresentar um pequeno número de coisas de tamanho limitado**. Todos os elementos e visualizações de a ScrollViewsão renderizados, mesmo que não sejam exibidos na tela no momento. **Se você tiver uma longa lista de itens que não cabem na tela, use um FlatList**. Então, vamos aprender sobre exibições de lista a seguir.
 
 ```javascript
+
+//ScrollView para pouca quantidade de itens
+
 import React from 'react';
 import { Image, ScrollView, Text } from 'react-native';
 
@@ -184,5 +190,150 @@ const App = () => (
 );
 
 export default App;
+
+//FLATLIST para grande quantidade de itens
+
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+   flex: 1,
+   paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+});
+
+const FlatListBasics = () => {
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={[
+          {key: 'Devin'},
+          {key: 'Dan'},
+          {key: 'Dominic'},
+          {key: 'Jackson'},
+          {key: 'James'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jillian'},
+          {key: 'Jimmy'},
+          {key: 'Julie'},
+        ]}
+        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+      />
+    </View>
+  );
+}
+
+export default FlatListBasics;
+
+//SECTIONLIST
+
+import React from 'react';
+import { SectionList, StyleSheet, Text, View } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+   flex: 1,
+   paddingTop: 22
+  },
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+})
+
+const SectionListBasics = () => {
+    return (
+      <View style={styles.container}>
+        <SectionList
+          sections={[
+            {title: 'D', data: ['Devin', 'Dan', 'Dominic']},
+            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
+      </View>
+    );
+}
+
+export default SectionListBasics;
+
+```
+### Platform
+```javascript
+import { Platform, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  height: Platform.OS === 'ios' ? 200 : 100
+});
+```
+Há também um Platform.selectmétodo disponível, que dado um objeto onde as chaves podem ser uma de 'ios' | 'android' | 'native' | 'default'
+
+```javascript
+import { Platform, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...Platform.select({
+      ios: {
+        backgroundColor: 'red'
+      },
+      android: {
+        backgroundColor: 'green'
+      },
+      default: {
+        // other platforms, web for example
+        backgroundColor: 'blue'
+      }
+    })
+  }
+});
 ```
 
+```javascript
+const Component = Platform.select({
+  ios: () => require('ComponentIOS'),
+  android: () => require('ComponentAndroid')
+})();
+
+<Component />;
+
+const Component = Platform.select({
+  native: () => require('ComponentForNative'),
+  default: () => require('ComponentForWeb')
+})();
+
+<Component />;
+
+import { Platform } from 'react-native';
+
+if (Platform.Version === 25) {
+  console.log('Running on Nougat!');
+}
+
+import { Platform } from 'react-native';
+
+const majorVersionIOS = parseInt(Platform.Version, 10);
+if (majorVersionIOS <= 9) {
+  console.log('Work around a change in behavior');
+}
+```
