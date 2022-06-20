@@ -68,7 +68,7 @@
                 keyAlias MYAPP_UPLOAD_KEY_ALIAS
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
-        }        
+        }
         /*
         debug {
             storeFile file('debug.keystore')
@@ -78,7 +78,7 @@
         }
         */
     }
-
+    buildTypes {
     
     cd android
     ./gradlew bundleRelease
