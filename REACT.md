@@ -4,19 +4,18 @@
 import React from 'react';
 import { //Core components
 Button,
-FlatList, - para grande quantidade de conteúdo.
-Image, <Image source={{uri: "https://abc/cat.png"}} style={{width: 20, height: 20}} />
-Platform, Ex: Platform.OS === 'ios' ? 200 : 100
-ScrollView,
+FlatList, //Para grande quantidade de conteúdo
+Image, //<Image source={{uri: "https://abc/cat.png"}} style={{width: 20, height: 20}} />
+Platform, //Ex: Platform.OS === 'ios' ? 200 : 100
+ScrollView, //Para pequena quantidade de conteúdo
 StatusBar,
 StyleSheet,
-Text <Text> equivalente a <p>
-TextInput
-View - <View> equivalente a <div>
-SafeAreaView, - render em iOS version 11 or 11+, wrap flex: 1
-InputAccessoryView - usar com nativeID, render iOS keyboard.
-ScrollView - para pequena quantidade de conteúdo
-SectionList, - para segmentar pela letra do nome uma lista de nomes, d: dan, den...
+Text, //<Text> equivalente a <p>
+TextInput,
+View, //<View> equivalente a <div>
+SafeAreaView, //Render em iOS version 11 or 11+, wrap flex: 1
+InputAccessoryView, //Usar com nativeID, render iOS keyboard.
+SectionList, //Para segmentar pela letra do nome uma lista de nomes, d: dan, den...
 } from 'react-native';
 
 //EXEMPLOS
