@@ -47,3 +47,60 @@
     React error 8810 - 8806:
     File -> Preferences -> Settings
     "javascript.validate.enable": false
+
+## React extras
+
+    npm install styled-components
+    ou
+    yarn add styled-components
+    
+    
+    npm install @react-navigation/native
+    https://reactnavigation.org/docs/getting-started
+    npm install react-native-screens react-native-safe-area-context
+    
+    index.js
+    import 'react-native-gesture-handler'; (Gestos a serem feitos na tela)
+    
+    npm install @react-navigation/stack
+    npm install @react-navigation/bottom-tabs
+    npm install @react-native-community/async-storage
+    
+    npm install @react-native-community/geolocation
+    * Edit: \android\app\src\main\AndroidManifest.xml (Solicita localização do usuario)
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" ></uses>
+    
+    npm install react-native-permissions
+    
+    npm install react-native-swiper
+    npm install react-native-svg
+    
+    npm install react-native-svg-transformer
+    * Edit: \metro.config.js (faça o merge ou / cole abaixo)
+    //Conforme: https://github.com/kristerkari/react-native-svg-transformer
+    
+    const { getDefaultConfig } = require('metro-config');
+    
+    module.exports = (async () => {
+      const {
+        resolver: { sourceExts, assetExts },
+      } = await getDefaultConfig();
+      return {
+        transformer: {
+          getTransformOptions: async () => ({
+            transform: {
+              experimentalImportSupport: false,
+              inlineRequires: true,
+            },
+          }),
+          babelTransformerPath: require.resolve('react-native-svg-transformer'),
+        },
+        resolver: {
+          assetExts: assetExts.filter(ext => ext !== 'svg'),
+          sourceExts: [...sourceExts, 'svg'],
+        },
+      };
+    })();
+    
+    
+
